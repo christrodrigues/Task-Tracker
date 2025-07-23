@@ -1,15 +1,26 @@
-import React from 'react'
-import Button from './Button'
+import React from "react";
+import { Plus, X } from "lucide-react";
 
-const Header = ({ title = 'Task Tracker' }) => {
+const Header = ({ onAdd, showAddTask }) => {
   return (
-    <header className='header'>
-        <h1>{title}</h1>
-        <Button color='black' text='Add' />
-    </header>
-  )
-}
+    <div className="header-modern">
+      <div className="header-content">
+        <div className="header-text">
+          <h1 className="header-title">Task Manager</h1>
+          <p className="header-subtitle">Stay organized and productive</p>
+        </div>
+        <button
+          onClick={onAdd}
+          className={`header-btn ${
+            showAddTask ? "header-btn-close" : "header-btn-add"
+          }`}
+        >
+          {showAddTask ? <X size={18} /> : <Plus size={18} />}
+          {showAddTask ? "Cancel" : "Add Task"}
+        </button>
+      </div>
+    </div>
+  );
+};
 
-
-
-export default Header
+export default Header;
